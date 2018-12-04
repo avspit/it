@@ -8,7 +8,7 @@ public class SquareManagerTest {
     @Test
     public void whenInputParamsThenReturnCorrectValue() {
         SquareManager sm = new SquareManager();
-        Assert.assertEquals((int) sm.calculateAtMidpoint(2, 5, 10, 24), 291);
+        Assert.assertEquals((int) sm.calculateAtMidpoint(24, 2, 5, 10), 291);
     }
 
 }
