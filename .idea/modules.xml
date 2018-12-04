@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ex02/bubble-sort/bubble-sort.iml" filepath="$PROJECT_DIR$/ex02/bubble-sort/bubble-sort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex01/division-by-3-check/division-by-3-check.iml" filepath="$PROJECT_DIR$/ex01/division-by-3-check/division-by-3-check.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex01/division-by-5-11-check/division-by-5-11-check.iml" filepath="$PROJECT_DIR$/ex01/division-by-5-11-check/division-by-5-11-check.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex01/even-odd-check/even-odd-check.iml" filepath="$PROJECT_DIR$/ex01/even-odd-check/even-odd-check.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex01/ex01.iml" filepath="$PROJECT_DIR$/ex01/ex01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex02/ex02.iml" filepath="$PROJECT_DIR$/ex02/ex02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex03/ex03.iml" filepath="$PROJECT_DIR$/ex03/ex03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex02/integral-rectangle/integral-rectangle.iml" filepath="$PROJECT_DIR$/ex02/integral-rectangle/integral-rectangle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex02/integral-simpson/integral-simpson.iml" filepath="$PROJECT_DIR$/ex02/integral-simpson/integral-simpson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex02/integral-trapezium/integral-trapezium.iml" filepath="$PROJECT_DIR$/ex02/integral-trapezium/integral-trapezium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rudn.iml" filepath="$PROJECT_DIR$/rudn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex03/runge-kutta/runge-kutta.iml" filepath="$PROJECT_DIR$/ex03/runge-kutta/runge-kutta.iml" />
+    </modules>
+  </component>
+</project>

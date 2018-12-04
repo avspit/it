@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="bubble-sort" />
+        <module name="division-by-3-check" />
+        <module name="division-by-5-11-check" />
+        <module name="even-odd-check" />
+        <module name="integral-rectangle" />
+        <module name="integral-simpson" />
+        <module name="integral-trapezium" />
+        <module name="parity-check" />
+        <module name="runge-kutta" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bubble-sort" target="1.5" />
+      <module name="division-by-3-check" target="1.5" />
+      <module name="division-by-5-11-check" target="1.5" />
+      <module name="even-odd-check" target="1.5" />
+      <module name="ex01" target="1.5" />
+      <module name="ex02" target="1.5" />
+      <module name="ex03" target="1.5" />
+      <module name="ex04" target="1.5" />
+      <module name="integral-rectangle" target="1.5" />
+      <module name="integral-simpson" target="1.7" />
+      <module name="integral-trapezium" target="1.5" />
+      <module name="parity-check" target="1.5" />
+      <module name="rudn" target="1.5" />
+      <module name="runge-kutta" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
