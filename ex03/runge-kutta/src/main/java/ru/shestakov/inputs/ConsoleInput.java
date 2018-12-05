@@ -7,25 +7,6 @@ public class ConsoleInput implements Input {
 
     public String ask(String question) {
         System.out.print(question);
-        while (true) {
-            String nextLine = scanner.nextLine();
-            try {
-                if(!"e".equals(nextLine)) {
-                    String[] params = nextLine.replaceAll(" ","").split(",");
-                    if (params.length == 5) {
-                        for (int i=0; i<params.length; i++) {
-                            Integer.parseInt(params[i]);
-                        }
-                    }
-                }
-                return nextLine;
-            } catch (InputException ie) {
-                try {
-                    throw new InputException("one or more params have wrong format. please enter validate data again\n");
-                } catch (InputException e) {
-                    System.out.print(String.format("%s %s", ie.getMessage(), question));
-                }
-            }
-        }
+        return scanner.nextLine();
     }
 }

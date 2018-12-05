@@ -8,11 +8,11 @@ import org.openxmlformats.schemas.drawingml.x2006.chart.CTBoolean;
 import org.openxmlformats.schemas.drawingml.x2006.chart.CTLineSer;
 import org.openxmlformats.schemas.drawingml.x2006.chart.CTPlotArea;
 
-import java.util.Map;
+import java.util.List;
 
 public class ScatterChart {
-    private static final String FUNC_NAME = "func";
-    private static final String SIMPSON_NAME = "simpson";
+    private static final String FUNC_NAME = "func";  //TODO when func calculations come
+    private static final String RK_NAME = "runge-kutta";
     private static final  int SHIFT = 2;
     private XSSFWorkbook wb = new XSSFWorkbook();
     private XSSFSheet sheet = this.wb.createSheet("Лист 1");
@@ -23,26 +23,16 @@ public class ScatterChart {
     }
 
     private void createSheetRows(RKManager sm) {
-        createSheetRowsByFuncMap(sm.getFunc());
-        createSheetRowsBySimpsonFuncMap(sm.getSimpsonFunc());
+        //createSheetRowsByFuncMap(sm.getFunc()); //TODO when func calculations come
+        createSheetRowsByRungeKuttaFuncMap(sm.getRungeKuttaCalculations());
     }
 
-    private void createSheetRowsBySimpsonFuncMap(Map<Double,Double> value) {
+    private void createSheetRowsByRungeKuttaFuncMap(List<RKEntity> list) {
         int rowIndex = this.rowIndex;
-        for(Map.Entry<Double,Double> entry : value.entrySet()) {
-            Row row = this.sheet.getRow((short) rowIndex);
-            createCell(row, (short) 3, entry.getKey());
-            createCell(row, (short) 4, entry.getValue());
-            rowIndex++;
-        }
-    }
-
-    private void createSheetRowsByFuncMap(Map<Double,Double> value) {
-        int rowIndex = this.rowIndex;
-        for(Map.Entry<Double,Double> entry : value.entrySet()) {
+        for(RKEntity entity : list) {
             Row row = this.sheet.createRow((short) rowIndex);
-            createCell(row, (short) 0, entry.getKey());
-            createCell(row, (short) 1, entry.getValue());
+            createCell(row, (short) 0, entity.getX());
+            createCell(row, (short) 1, entity.getY());
             rowIndex++;
         }
     }
@@ -50,8 +40,8 @@ public class ScatterChart {
     private void createHeaderRows() {
         CellStyle style = createHeaderStyle();
         Row row = this.sheet.createRow((short) this.rowIndex);
-        createCell(row, (short) 0, this.FUNC_NAME, style);
-        createCell(row, (short) 3, this.SIMPSON_NAME, style);
+        createCell(row, (short) 0, this.RK_NAME, style);
+        //createCell(row, (short) 3, this.FUNC_NAME, style); //TODO when func calculations come
         increaseRowIndex();
     }
 
@@ -60,8 +50,8 @@ public class ScatterChart {
         Row row = this.sheet.createRow((short) this.rowIndex);
         createCell(row, (short) 0, "x", style);
         createCell(row, (short) 1, "y", style);
-        createCell(row, (short) 3, "x", style);
-        createCell(row, (short) 4, "y", style);
+        //createCell(row, (short) 3, "x", style); //TODO func when calculations come
+        //createCell(row, (short) 4, "y", style); //TODO func when calculations come
         increaseRowIndex();
     }
 
@@ -121,15 +111,15 @@ public class ScatterChart {
         ValueAxis leftAxis = chart.getChartAxisFactory().createValueAxis(AxisPosition.LEFT);
         leftAxis.setCrosses(AxisCrosses.AUTO_ZERO);
         LineChartSeries series1 = data.addSeries(
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFunc().size() + this.SHIFT - 1, 0, 0)),
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFunc().size() + this.SHIFT - 1, 1, 1))
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getRungeKuttaCalculations().size() + this.SHIFT - 1, 0, 0)),
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getRungeKuttaCalculations().size() + this.SHIFT - 1, 1, 1))
         );
-        series1.setTitle(this.FUNC_NAME);
-        LineChartSeries series2 = data.addSeries(
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getSimpsonFunc().size() + this.SHIFT - 1, 3, 3)),
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getSimpsonFunc().size() + this.SHIFT - 1, 4, 4))
+        series1.setTitle(this.RK_NAME);
+        /*LineChartSeries series2 = data.addSeries(
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFunc().size() + this.SHIFT - 1, 3, 3)),
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFunc().size() + this.SHIFT - 1, 4, 4))
         );
-        series2.setTitle(this.SIMPSON_NAME);
+        series2.setTitle(this.FUNC_NAME);*/ //TODO when func calculations come
         chart.plot(data, bottomAxis, leftAxis);
         XSSFChart xssfChart = (XSSFChart) chart;
         CTPlotArea plotArea = xssfChart.getCTChart().getPlotArea();
