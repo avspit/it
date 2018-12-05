@@ -6,7 +6,7 @@ public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
     public String ask(String question) {
-        System.out.print(question);
+        System.out.println(question);
         while (true) {
             String nextLine = scanner.nextLine();
             try {
@@ -18,7 +18,7 @@ public class ConsoleInput implements Input {
                 try {
                     throw new InputException("number have wrong format. please enter validate data again\n");
                 } catch (InputException e) {
-                    System.out.print(String.format("%s %s", ie.getMessage(), question));
+                    System.out.println(String.format("%s %s", ie.getMessage(), question));
                 }
             }
         }

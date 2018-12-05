@@ -6,15 +6,15 @@ import org.junit.Test;
 public class DivisionManagerTest {
 
     @Test
-    public void whenNumberIsDividibleThenReturnCorrectValue() {
+    public void whenNumberIsDividibleThenReturnTrue() {
         DivisionManager manager = new DivisionManager();
-        Assert.assertEquals(manager.check("55"), "yes");
+        Assert.assertTrue(manager.check("55"));
     }
 
     @Test
-    public void whenNumberIsNoDividibleThenReturnCorrectValue() {
+    public void whenNumberIsNoDividibleThenReturnFalse() {
         DivisionManager manager = new DivisionManager();
-        Assert.assertEquals(manager.check("56"), "no");
+        Assert.assertTrue(!manager.check("56"));
     }
 
 }

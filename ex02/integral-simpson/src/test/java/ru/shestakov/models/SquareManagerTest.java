@@ -9,6 +9,6 @@ public class SquareManagerTest {
     public void whenInputParamsThenReturnCorrectValue() {
         SquareManager sm = new SquareManager();
         sm.loadParams(2, 5, 10, 24);
-        Assert.assertEquals((int) sm.calculate(), 291);
+        Assert.assertEquals((int) sm.integrate(), 291);
     }
 }

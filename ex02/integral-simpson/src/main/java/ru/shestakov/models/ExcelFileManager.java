@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class ExcelFileManager extends FileManager {
+public class ExcelFileManager extends AppManager {
     private static final String FILE_NAME = "integral-simpson-result.xlsx";
 
     @Override

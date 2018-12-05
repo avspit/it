@@ -15,7 +15,7 @@ public class StartUI {
         while (true) {
             String text = this.input.ask("input number or 'e' to exit:");
             if ("e".equals(text)) { break; }
-            System.out.println(eom.check(text));
+            System.out.println(eom.check(text) ? "yes" : "no");
         }
     }
 

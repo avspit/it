@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class TxtFileManager extends FileManager {
+public class TxtFileManager extends AppManager {
     private static final String FILE_NAME = "integral-simpson-result.txt";
 
     @Override

@@ -3,20 +3,18 @@ package ru.shestakov.models;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class DivisionManagerTest {
 
     @Test
-    public void whenNumberIsDividibleThenReturnCorrectValue() {
+    public void whenNumberIsDividibleThenReturnTrue() {
         DivisionManager manager = new DivisionManager();
-        Assert.assertEquals(manager.check("9"), "yes");
+        Assert.assertTrue(manager.check("9"));
     }
 
     @Test
-    public void whenNumberIsNoDividibleThenReturnCorrectValue() {
+    public void whenNumberIsNoDividibleThenReturnFalse() {
         DivisionManager manager = new DivisionManager();
-        Assert.assertEquals(manager.check("10"), "no");
+        Assert.assertTrue(!manager.check("10"));
     }
 
 }

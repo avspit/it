@@ -4,8 +4,6 @@ import ru.shestakov.inputs.ConsoleInput;
 import ru.shestakov.inputs.Input;
 import ru.shestakov.models.EvenOddManager;
 
-import java.io.IOException;
-
 public class StartUI {
     private Input input;
 
@@ -17,7 +15,7 @@ public class StartUI {
         while (true) {
             String text = this.input.ask("input number or 'e' to exit:");
             if ("e".equals(text)) { break; }
-            System.out.println(eom.check(text));
+            System.out.println(eom.check(text) ? "even" : "odd");
         }
     }
 

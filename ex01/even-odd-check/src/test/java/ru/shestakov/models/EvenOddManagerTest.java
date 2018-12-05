@@ -6,15 +6,15 @@ import org.junit.Test;
 public class EvenOddManagerTest {
 
     @Test
-    public void whenOddThenReturnCorrectValue() {
+    public void whenEvenThenReturnTrue() {
         EvenOddManager manager = new EvenOddManager();
-        Assert.assertEquals(manager.check("10"), "even");
+        Assert.assertTrue(manager.check("10"));
     }
 
     @Test
-    public void whenEvenThenReturnCorrectValue() {
+    public void whenOddThenReturnFalse() {
         EvenOddManager manager = new EvenOddManager();
-        Assert.assertEquals(manager.check("11"), "odd");
+        Assert.assertTrue(!manager.check("11"));
     }
 
 }

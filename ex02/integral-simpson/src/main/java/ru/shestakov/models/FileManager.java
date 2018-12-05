@@ -1,20 +1,10 @@
 package ru.shestakov.models;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+public interface FileManager {
 
-public abstract class FileManager {
+    void deleteFileIsExists(String fileName);
 
-    public void deleteFileIsExists(String fileName) {
-        try {
-            Files.deleteIfExists(Paths.get(fileName));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    void print(String value);
 
-    public void print(String value) { }
-
-    public void print(SquareManager sm) { }
+    void print(SquareManager sm);
 }

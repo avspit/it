@@ -2,10 +2,7 @@ package ru.shestakov.start;
 
 import ru.shestakov.inputs.ConsoleInput;
 import ru.shestakov.inputs.Input;
-import ru.shestakov.models.ExcelFileManager;
-import ru.shestakov.models.FileManager;
-import ru.shestakov.models.SquareManager;
-import ru.shestakov.models.TxtFileManager;
+import ru.shestakov.models.*;
 
 public class StartUI {
     private Input input;
@@ -19,10 +16,10 @@ public class StartUI {
             String text = this.input.ask("function is: y = x^n, where n is exponent. input function`s exponent, square section and limit (format: <exponent,from,to,limit>) or 'e' to exit:");
             if ("e".equals(text)) { break; }
             sm.loadParams(text);
-            FileManager txt = new TxtFileManager();
-            txt.print(String.valueOf(sm.integrate()));
-            FileManager excel = new ExcelFileManager();
-            excel.print(sm);
+            FileManager tfm = new TxtFileManager();
+            tfm.print(String.valueOf(sm.integrate()));
+            FileManager efm = new ExcelFileManager();
+            efm.print(sm);
         }
     }
 

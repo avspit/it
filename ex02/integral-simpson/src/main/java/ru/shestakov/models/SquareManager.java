@@ -32,15 +32,11 @@ public class SquareManager {
         this.params.put("sectionTo", params[2]);
     }
 
-    public double integrate() {
-        return calculate();
-    }
-
     private double func(double exponent, double x) {
         return Math.pow(x, exponent);
     }
 
-    public double calculate() {
+    public double integrate() {
         double result = 0;
         double exponent = this.params.get("exponent"), sectionFrom = this.params.get("sectionFrom"), sectionTo = this.params.get("sectionTo");
         double step = (sectionTo - sectionFrom) / this.limit;

@@ -13,7 +13,7 @@ import java.util.Map;
 public class ScatterChart {
     private static final String FUNC_NAME = "func";
     private static final String SIMPSON_NAME = "simpson";
-    private static final  int SHIFT = 2;
+    private static final int SHIFT = 2;
     private XSSFWorkbook wb = new XSSFWorkbook();
     private XSSFSheet sheet = this.wb.createSheet("Лист 1");
     private int rowIndex = 0;
