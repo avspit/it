@@ -20,7 +20,7 @@ public class SquareManager {
     }
 
     private double сalculate(String[] params) {
-        return doCalculate(Integer.parseInt(params[3]), Double.parseDouble(params[0]), Double.parseDouble(params[1]), Double.parseDouble(params[2]));
+        return doCalculate(Double.parseDouble(params[0]), Double.parseDouble(params[1]), Double.parseDouble(params[2]), Double.parseDouble(params[3]));
     }
 
     public double сalculate(double... params) {
