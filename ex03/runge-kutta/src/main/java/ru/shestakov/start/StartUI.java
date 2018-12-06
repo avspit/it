@@ -12,13 +12,12 @@ public class StartUI {
         this.input = input;
     }
 
-    public void init(RKManager sm) {
+    public void init(RKManager rkm) {
         while (true) {
             String text = this.input.ask("function is: y' = x + y. input y(0) value (2 by default), step value (0.1 by default), section (from 0 to 1 by default) and limit (20 by default). format: <y0,step,from,to,limit> or 'e' to exit:");
             if ("e".equals(text)) { break; }
-            sm.loadParams(text);
-            sm.calculate();
-            new ExcelFileManager().print(sm);
+            rkm.integrate(text);
+            new ExcelFileManager().print(rkm);
         }
     }
 

@@ -23,8 +23,8 @@ public class ScatterChart {
     }
 
     private void createSheetRows(SquareManager sm) {
-        createSheetRowsByFuncMap(sm.getFunc());
-        createSheetRowsBySimpsonFuncMap(sm.getSimpsonFunc());
+        createSheetRowsByFuncMap(sm.getFuncCalculations());
+        createSheetRowsBySimpsonFuncMap(sm.getSimpsonCalculations());
     }
 
     private void createSheetRowsBySimpsonFuncMap(Map<Double,Double> value) {
@@ -121,13 +121,13 @@ public class ScatterChart {
         ValueAxis leftAxis = chart.getChartAxisFactory().createValueAxis(AxisPosition.LEFT);
         leftAxis.setCrosses(AxisCrosses.AUTO_ZERO);
         LineChartSeries series1 = data.addSeries(
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFunc().size() + this.SHIFT - 1, 0, 0)),
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFunc().size() + this.SHIFT - 1, 1, 1))
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFuncCalculations().size() + this.SHIFT - 1, 0, 0)),
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFuncCalculations().size() + this.SHIFT - 1, 1, 1))
         );
         series1.setTitle(this.FUNC_NAME);
         LineChartSeries series2 = data.addSeries(
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getSimpsonFunc().size() + this.SHIFT - 1, 3, 3)),
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getSimpsonFunc().size() + this.SHIFT - 1, 4, 4))
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getSimpsonCalculations().size() + this.SHIFT - 1, 3, 3)),
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getSimpsonCalculations().size() + this.SHIFT - 1, 4, 4))
         );
         series2.setTitle(this.SIMPSON_NAME);
         chart.plot(data, bottomAxis, leftAxis);

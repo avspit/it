@@ -20,8 +20,17 @@ public class RKManager {
         return rungeKuttaCalculations;
     }
 
-    public void loadParams(String text) {
-        String[] arr = text.replaceAll(" ","").split(",");
+    public void integrate(String text) {
+        loadParams(text.replaceAll(" ","").split(","));
+        calculate();
+    }
+
+    public void integrate(double... params) {
+        loadParams(params);
+        calculate();
+    }
+
+    private void loadParams(String[] arr) {
         boolean allParametersAreInput = arr.length == 5;
         this.y0 = allParametersAreInput ? Double.parseDouble(arr[0]) : this.Y0_BY_DEFAULT;
         this.step = allParametersAreInput ? Double.parseDouble(arr[1]) : this.STEP_BY_DEFAULT;
@@ -30,11 +39,20 @@ public class RKManager {
         this.limit = allParametersAreInput ? Integer.parseInt(arr[4]) : this.LIMIT_BY_DEFAULT;
     }
 
+    private void loadParams(double... params) {
+        boolean allParametersAreInput = params.length == 5;
+        this.y0 = allParametersAreInput ? params[0] : this.Y0_BY_DEFAULT;
+        this.step = allParametersAreInput ? params[1] : this.STEP_BY_DEFAULT;
+        this.from = allParametersAreInput ? params[2] : this.FROM_BY_DEFAULT;
+        this.to = allParametersAreInput ? params[3] : this.TO_BY_DEFAULT;
+        this.limit = allParametersAreInput ? (int) params[4] : this.LIMIT_BY_DEFAULT;
+    }
+
     private double func(double x, double y) {
         return x + y;
     }
 
-    public void calculate() {
+    private void calculate() {
         double step = (this.to - this.from) / this.limit;
         double y = this.y0;
         double deltaY = 0;

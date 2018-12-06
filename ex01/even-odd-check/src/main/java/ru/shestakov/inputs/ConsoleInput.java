@@ -1,8 +1,12 @@
 package ru.shestakov.inputs;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Scanner;
 
 public class ConsoleInput implements Input {
+    private static final Logger LOG = LoggerFactory.getLogger(ConsoleInput.class);
     private Scanner scanner = new Scanner(System.in);
 
     public String ask(String question) {
@@ -18,7 +22,8 @@ public class ConsoleInput implements Input {
                 try {
                     throw new InputException("number have wrong format. please enter validate data again\n");
                 } catch (InputException e) {
-                    System.out.println(String.format("%s %s", ie.getMessage(), question));
+                    LOG.error(e.getMessage(), e);
+                    System.out.println(question);
                 }
             }
         }

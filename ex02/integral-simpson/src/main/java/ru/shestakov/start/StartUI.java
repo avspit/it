@@ -15,9 +15,8 @@ public class StartUI {
         while (true) {
             String text = this.input.ask("function is: y = x^n, where n is exponent. input function`s exponent, square section and limit (format: <exponent,from,to,limit>) or 'e' to exit:");
             if ("e".equals(text)) { break; }
-            sm.loadParams(text);
             FileManager tfm = new TxtFileManager();
-            tfm.print(String.valueOf(sm.integrate()));
+            tfm.print(String.valueOf(sm.integrate(text)));
             FileManager efm = new ExcelFileManager();
             efm.print(sm);
         }
