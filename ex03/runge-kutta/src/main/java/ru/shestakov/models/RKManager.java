@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RKManager {
-    private static final int LIMIT_BY_DEFAULT = 10;
+    private static final int LIMIT_BY_DEFAULT = 20;
     private static final double Y0_BY_DEFAULT = 2.0;
     private static final double STEP_BY_DEFAULT = 0.1;
     private static final double FROM_BY_DEFAULT = 0;
