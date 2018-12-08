@@ -8,7 +8,7 @@ public class RKManager {
     private static final double Y0_BY_DEFAULT = 2.0;
     private static final double STEP_BY_DEFAULT = 0.1;
     private static final double FROM_BY_DEFAULT = 0;
-    private static final double TO_BY_DEFAULT = 1;
+    private static final double TO_BY_DEFAULT = 2;
     private int limit;
     private double y0;
     private double step;

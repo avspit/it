@@ -109,7 +109,7 @@
 | y(0) | 2 |
 | step (h) | 0.1 |
 | section from | 0 |
-| section to | 1 |
+| section to | 2 |
 | limit (n) | 20 |
 
 [:arrow_up:Оглавление](#Оглавление)
