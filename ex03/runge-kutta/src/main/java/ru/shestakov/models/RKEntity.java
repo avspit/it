@@ -12,6 +12,11 @@ public class RKEntity {
     public RKEntity() {
     }
 
+    public RKEntity(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public RKEntity(double x, double y, double k1, double k2, double k3, double k4, double deltaY) {
         this.x = x;
         this.y = y;

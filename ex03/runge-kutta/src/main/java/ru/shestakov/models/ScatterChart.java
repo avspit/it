@@ -11,7 +11,7 @@ import org.openxmlformats.schemas.drawingml.x2006.chart.CTPlotArea;
 import java.util.List;
 
 public class ScatterChart {
-    private static final String FUNC_NAME = "func";  //TODO when func calculations come
+    private static final String FUNC_NAME = "-x+3e^x-1";
     private static final String RK_NAME = "runge-kutta";
     private static final  int SHIFT = 2;
     private XSSFWorkbook wb = new XSSFWorkbook();
@@ -23,8 +23,19 @@ public class ScatterChart {
     }
 
     private void createSheetRows(RKManager sm) {
-        //createSheetRowsByFuncMap(sm.getFunc()); //TODO when func calculations come
+        sm.fillFuncCalculations();
         createSheetRowsByRungeKuttaFuncMap(sm.getRungeKuttaCalculations());
+        createSheetRowsByFuncMap(sm.getFuncCalculations());
+    }
+
+    private void createSheetRowsByFuncMap(List<RKEntity> list) {
+        int rowIndex = this.rowIndex;
+        for(RKEntity entity : list) {
+            Row row = this.sheet.getRow((short) rowIndex);
+            createCell(row, (short) 3, entity.getX());
+            createCell(row, (short) 4, entity.getY());
+            rowIndex++;
+        }
     }
 
     private void createSheetRowsByRungeKuttaFuncMap(List<RKEntity> list) {
@@ -41,7 +52,7 @@ public class ScatterChart {
         CellStyle style = createHeaderStyle();
         Row row = this.sheet.createRow((short) this.rowIndex);
         createCell(row, (short) 0, this.RK_NAME, style);
-        //createCell(row, (short) 3, this.FUNC_NAME, style); //TODO when func calculations come
+        createCell(row, (short) 3, this.FUNC_NAME, style);
         increaseRowIndex();
     }
 
@@ -50,8 +61,8 @@ public class ScatterChart {
         Row row = this.sheet.createRow((short) this.rowIndex);
         createCell(row, (short) 0, "x", style);
         createCell(row, (short) 1, "y", style);
-        //createCell(row, (short) 3, "x", style); //TODO func when calculations come
-        //createCell(row, (short) 4, "y", style); //TODO func when calculations come
+        createCell(row, (short) 3, "x", style);
+        createCell(row, (short) 4, "y", style);
         increaseRowIndex();
     }
 
@@ -115,11 +126,11 @@ public class ScatterChart {
                 DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getRungeKuttaCalculations().size() + this.SHIFT - 1, 1, 1))
         );
         series1.setTitle(this.RK_NAME);
-        /*LineChartSeries series2 = data.addSeries(
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFunc().size() + this.SHIFT - 1, 3, 3)),
-                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFunc().size() + this.SHIFT - 1, 4, 4))
+        LineChartSeries series2 = data.addSeries(
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFuncCalculations().size() + this.SHIFT - 1, 3, 3)),
+                DataSources.fromNumericCellRange(sheet, new CellRangeAddress(2, sm.getFuncCalculations().size() + this.SHIFT - 1, 4, 4))
         );
-        series2.setTitle(this.FUNC_NAME);*/ //TODO when func calculations come
+        series2.setTitle(this.FUNC_NAME);
         chart.plot(data, bottomAxis, leftAxis);
         XSSFChart xssfChart = (XSSFChart) chart;
         CTPlotArea plotArea = xssfChart.getCTChart().getPlotArea();
